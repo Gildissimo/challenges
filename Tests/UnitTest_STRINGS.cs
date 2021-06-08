@@ -5,7 +5,7 @@ using ScolloLib;
 namespace Tests
 {
     [TestClass]
-    public class UnitTest1
+    public class UnitTest_STRINGS
     {
         [TestMethod]
         public void Step1()
