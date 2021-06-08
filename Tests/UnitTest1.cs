@@ -50,6 +50,7 @@ namespace Tests
         public void Step6()
         {
             Assert.AreEqual(CalcLib.Add("//[*][%]//1*2%3"), 6);
+            Assert.ThrowsException<ParseException>(() => CalcLib.Add("//[**][%]//1*2%3"));
         }
 
         /// <summary>

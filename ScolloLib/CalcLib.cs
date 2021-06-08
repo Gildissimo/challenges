@@ -72,7 +72,11 @@ namespace ScolloLib
                 {
                     regexDelimiter += "|";
                 }
-                regexDelimiter += ("[" + delimiter + "]");
+                foreach (var dchar in delimiter)
+                {
+                        regexDelimiter += (@"\" + dchar.ToString());
+                }
+               
             }
             
 
@@ -103,7 +107,7 @@ namespace ScolloLib
                     }
                     else
                     {
-                        throw new Exception(String.Format("Unable to parse number {0}", stringNumberTrimmed));
+                        throw new ParseException(stringNumberTrimmed);
                     }
                 }
 
@@ -122,6 +126,20 @@ namespace ScolloLib
 
         public NegativeException(string negativenumber)
             : base(String.Format("negatives not allowed: {0}", negativenumber))
+        {
+
+        }
+    }
+
+    public class ParseException : Exception
+    {
+        public ParseException()
+        {
+
+        }
+
+        public ParseException(string number)
+            : base(String.Format("Unable to parse number: {0}", number))
         {
 
         }
